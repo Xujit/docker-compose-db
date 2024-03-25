@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  talency-mongodb:
+    image: mongo
+    container_name: talnecy-mongo
+    ports:
+      - 27017:27017
+    volumes:
+      # seeding scripts
+      - ./mongo-entrypoint:/docker-entrypoint-initdb.d
+      # named volumes
+      - mongodb:/data/db
+      - mongoconfig:/data/configdb
+    networks:
+      - postgres-network
+
   database:
     image: 'postgres:latest'
     ports:
@@ -25,6 +39,11 @@ services:
       - postgres-network
     volumes:
       - ./pgadmin-data/:/var/lib/pgadmin/
+
+volumes:
+  # default dir on Ubuntu: /var/lib/docker/volumes
+  mongodb:
+  mongoconfig:
 
 networks: 
   postgres-network:
