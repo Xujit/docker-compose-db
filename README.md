@@ -1,3 +1,7 @@
+Run the below command before running docker compose up
+sudo chown -R 5050:5050 pgadmin-data/
+
+
 # Docker-Compose with PostgreSQL ready to use
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/felipewom)
